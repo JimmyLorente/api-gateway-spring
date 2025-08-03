@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.Entradas.Entradas.ParticipantesDTO.ParticipanteDTO;
+import com.Entradas.Entradas.ParticipantesDTO.ParticipanteFeingApi;
+
 import lombok.AllArgsConstructor;
 
 @Service
@@ -12,6 +15,7 @@ import lombok.AllArgsConstructor;
 public class EntradasService {
     // Assuming you have a repository to interact with the database
     private final EntradasRepository entradasRepository;
+    private final ParticipanteFeingApi participanteFeingApi;
 
     // Metodo selecionar todos
     public List<Entradas> getAllEntradas() {
@@ -32,8 +36,12 @@ public class EntradasService {
 
 
     public Entradas getEntradasById(Long id) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getEntradasById'");
+    }
+    
+    // Comunicar con el microservicio de participantes
+    public ParticipanteDTO obtenerParticipanteDTO(Long id) {
+        return participanteFeingApi.BuscarParticipantePorId(id);
     }
 
 

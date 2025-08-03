@@ -42,5 +42,5 @@ public class ParticipantesController {
     public void delete(@PathVariable("id") Long id) {
         eventosService.delete(id);
     }
-    
+
 }

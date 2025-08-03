@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.Eventos.ParticipantesDTO.ParticipanteDTO;
+import com.example.Eventos.ParticipantesDTO.ParticipanteFeingApi;
+
 import lombok.AllArgsConstructor;
 
 @Service
@@ -11,6 +14,7 @@ import lombok.AllArgsConstructor;
 public class EventosService {
 
     private final EventosRepository eventosRepository;
+    private final ParticipanteFeingApi participanteFeingApi;
 
     // Método para obtener todos los eventos
     public List<Eventos> getEventos() {
@@ -31,4 +35,11 @@ public class EventosService {
     public void deleteEventos(Long id) {
         eventosRepository.deleteById(id);
     }
+
+    //Comunicar con el microservicio de participantes
+    public ParticipanteDTO obtenerParticipanteDTO(Long id) {
+        return participanteFeingApi.BuscarParticipantePorId(id);
+
+    }
+
 }

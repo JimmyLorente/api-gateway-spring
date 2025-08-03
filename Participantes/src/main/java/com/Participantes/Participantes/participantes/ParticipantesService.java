@@ -32,6 +32,6 @@ public class ParticipantesService {
         participantesRepository.deleteById(id);
     }
 
-    }
 
+}
 
